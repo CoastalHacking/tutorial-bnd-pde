@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: us.coastalhacking.tutorial.pde.bundle
+Bundle-SymbolicName: us.coastalhacking.tutorial.pde.bundle
+Bundle-Name: Bundle
+Bundle-Version: 1.0.0.201806131810
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+
