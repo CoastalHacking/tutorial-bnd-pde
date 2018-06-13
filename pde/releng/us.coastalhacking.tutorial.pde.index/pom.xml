@@ -1,0 +1,43 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>us.coastalhacking.tutorial.pde</groupId>
+		<artifactId>us.coastalhacking.tutorial.pde.releng</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>us.coastalhacking.tutorial.pde.index</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<dependencies>
+		<dependency>
+			<artifactId>us.coastalhacking.tutorial.pde.update</artifactId>
+			<groupId>us.coastalhacking.tutorial.pde</groupId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-indexer-maven-plugin</artifactId>
+				<version>${bnd.version}</version>
+				<configuration>
+					<inputDir>../us.coastalhacking.tutorial.pde.update/target/repository/plugins</inputDir>
+					<localURLs>${local.url.policy}</localURLs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>index</id>
+						<goals>
+							<goal>local-index</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

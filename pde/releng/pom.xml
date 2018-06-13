@@ -13,5 +13,6 @@
 
     <modules>
         <module>us.coastalhacking.tutorial.pde.update</module>
+        <module>us.coastalhacking.tutorial.pde.index</module>
     </modules>
 </project>

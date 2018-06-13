@@ -8,8 +8,17 @@ buildscript {
 
 apply plugin: 'biz.aQute.bnd.workspace'
 
-subprojects {
-  if (plugins.hasPlugin('biz.aQute.bnd')) {
-	compileJava.dependsOn ':pde:buildPde'
+refreshPde {
+  doLast {
+    println "refreshing PDE..."
+    bndWorkspace.repositories.findResult{ it.name == 'Pde' ? it : null }.refresh()	
   }
 }
+
+
+/*
+subprojects {
+  if (plugins.hasPlugin('biz.aQute.bnd')) {
+  }
+}
+*/

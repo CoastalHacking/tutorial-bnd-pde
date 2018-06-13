@@ -22,7 +22,15 @@
 		name = Release; \
 		pretty = true; \
 		local = ${build}/release
-
+		
+-plugin.5.Pde: \
+	aQute.bnd.deployer.repository.LocalIndexedRepo; \
+		locations='file:${.}/../../pde/releng/us.coastalhacking.tutorial.pde.index/target/index.xml'; \
+		readOnly = true; \
+		name = Pde; \
+		pretty = true; \
+		local = ${build}/pde
+        
 -releaserepo: Release
 -baselinerepo: Release
 
