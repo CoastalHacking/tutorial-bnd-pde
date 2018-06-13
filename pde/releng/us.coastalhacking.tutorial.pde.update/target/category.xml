@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/us.coastalhacking.tutorial.pde.feature_1.0.0.qualifier.jar" id="us.coastalhacking.tutorial.pde.feature" version="1.0.0.qualifier">
-      <category name="tutorialpde"/>
-   </feature>
-   <category-def name="tutorialpde" label="Tutorial PDE"/>
-</site>
