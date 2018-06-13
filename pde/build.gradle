@@ -1,0 +1,8 @@
+plugins {
+    id "com.github.dkorotych.gradle-maven-exec" version "1.2.2.1"
+}
+
+task buildPde(type: MavenExec) {
+    goals 'clean', 'package'
+    workingDir project(":pde").projectDir
+}
