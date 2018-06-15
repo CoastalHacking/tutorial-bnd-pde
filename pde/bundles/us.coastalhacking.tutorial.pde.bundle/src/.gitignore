@@ -1,0 +1,3 @@
+# Make PDE happy if this project is imported
+*
+!.gitignore
