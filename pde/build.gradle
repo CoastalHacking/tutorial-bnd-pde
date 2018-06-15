@@ -1,7 +1,10 @@
 plugins {
-    id "com.github.dkorotych.gradle-maven-exec" version "1.2.2.1"
+  id "com.github.dkorotych.gradle-maven-exec" version "1.2.2.1"
 }
 
+// Not-ideal: performs mvn build on each gradle build, slowing down bnd-only
+// builds. Should only call maven when needed; i.e., bnd-only changes shouldn't
+// require a re-build each time.
 task buildPde(type: MavenExec) {
     goals 'clean', 'package'
     workingDir project(":pde").projectDir

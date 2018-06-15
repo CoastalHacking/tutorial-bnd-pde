@@ -1,24 +1,41 @@
 buildscript {
 	repositories { mavenCentral() }
 	dependencies { classpath "biz.aQute.bnd:biz.aQute.bnd.gradle:${bnd_version}" }
-	/* Add bnd gradle plugin to buildscript classpath of rootProject */
-	//def bndPlugin = files(configurations.classpath.files)
-	//gradle.rootProject { buildscript { dependencies { classpath bndPlugin } } }
 }
 
+// Apply this plugin to the workspace directory only
 apply plugin: 'biz.aQute.bnd.workspace'
 
-refreshPde {
+// Task is defined in root build. Maybe define here?
+refreshPde() {
   doLast {
-    println "refreshing PDE..."
-    bndWorkspace.repositories.findResult{ it.name == 'Pde' ? it : null }.refresh()	
+    bndWorkspace.repositories.findResult { if (it.name == 'Pde') { it.refresh() } }
   }
 }
 
-
-/*
 subprojects {
   if (plugins.hasPlugin('biz.aQute.bnd')) {
+	// Both ':bnd' and its two bundle projects are seen as gradle projects.
+	// Therefore, ignore the 'bnd' parent project by requiring a task from a
+	// Java project, which the ':bnd' project is not.
+  	jar {
+  	  // This is called after the Java projects have been configured (and their
+  	  // buildpaths calculated), but prior to the buildpaths being used by the
+  	  // projects. The buildpaths will contain stale references to any repository
+  	  // that's been updated post-configuration.
+  	  doFirst {
+  	    // Via the gradle project get the bnd project
+  	  	def bndProject = bndWorkspace.getProject(project.name)
+  	  	// Need to call propertiesChanged() first. Otherwise the prepare() call is ignored.
+  	  	bndProject.propertiesChanged()
+  	  	// Re-calculates the buildpath, using any updated repositories
+  	  	bndProject.prepare()	  	
+  	  }
+  	  // Unsure if the below is a correct approach. Seems to be only called
+  	  // once even with two bnd projects. This SO answer seems to imply some
+  	  // different semantics: https://stackoverflow.com/a/16197193
+  	  // Don't know if the above is a 'red herring' or not.
+  	  dependsOn refreshPde
+  	}
   }
 }
-*/

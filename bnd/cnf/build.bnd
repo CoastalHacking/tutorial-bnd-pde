@@ -22,13 +22,14 @@
 		name = Release; \
 		pretty = true; \
 		local = ${build}/release
-		
+
+# Feels like a hack to reference the index this way
+# Could create the index in a separate gradle task to not reference here
 -plugin.5.Pde: \
 	aQute.bnd.deployer.repository.LocalIndexedRepo; \
 		locations='file:${.}/../../pde/releng/us.coastalhacking.tutorial.pde.index/target/index.xml'; \
 		readOnly = true; \
 		name = Pde; \
-		pretty = true; \
 		local = ${build}/pde
         
 -releaserepo: Release

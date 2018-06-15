@@ -1,3 +1,4 @@
 // https://github.com/bndtools/bnd/tree/4.0.0.REL/biz.aQute.bnd.gradle/testresources/workspaceplugin8
 include("bnd:us.coastalhacking.tutorial.bnd.provider")
+// tycho maven build
 include("pde")
